@@ -1,24 +1,36 @@
-import logo from './logo.svg';
+import React from "react";
+import { BrowserRouter as Router, Route, Link, Routes} from "react-router-dom";
 import './App.css';
+import CharacterList from "./components/CharacterList";
+import PlanetList from "./components/PlanetsList";
+import StarshipsList from "./components/StarshipsList";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+function App(){
+  return(
+    <Router>
+      <div className="App">
+        <nav>
+          <ul>
+            <li>
+              <Link to="/characters">Personajes</Link>
+            </li>
+            <li>
+              <Link to="/planets">Palnetas</Link>
+            </li>
+            <li>
+              <Link to="/starships">Naves</Link>
+            </li>
+          </ul>
+        </nav>
+
+        <Routes>
+          <Route path="/characters" element={<CharacterList/>}/>
+          <Route path="/planets" element={<PlanetList/>}/>
+          <Route path="/starships" element={<StarshipsList/>}/>
+          
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
